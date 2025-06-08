@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/customer-end",
+        "outputPath": "dist/apps/fe/customer-end",
         "index": "apps/customer-end/src/index.html",
         "browser": "apps/customer-end/src/main.ts",
         "polyfills": ["zone.js"],
@@ -89,7 +89,7 @@
       "options": {
         "buildTarget": "customer-end:build",
         "port": 4200,
-        "staticFilePath": "dist/apps/customer-end/browser",
+        "staticFilePath": "dist/apps/fe/customer-end/browser",
         "spa": true
       }
     }
