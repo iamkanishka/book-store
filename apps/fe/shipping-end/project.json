@@ -1,0 +1,97 @@
+{
+  "name": "shipping-end",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/fe/shipping-end/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/fe/shipping-end",
+        "index": "apps/fe/shipping-end/src/index.html",
+        "browser": "apps/fe/shipping-end/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/fe/shipping-end/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/fe/shipping-end/public"
+          }
+        ],
+        "styles": ["apps/fe/shipping-end/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/fe/shipping-end/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/fe/shipping-end/src/server.ts"
+        },
+        "prerender": true
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "shipping-end:build:production"
+        },
+        "development": {
+          "buildTarget": "shipping-end:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "shipping-end:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/fe/shipping-end/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "shipping-end:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/fe/shipping-end/browser",
+        "spa": true
+      }
+    }
+  }
+}
