@@ -1,8 +1,8 @@
 export default {
   displayName: 'customer-end',
-  preset: '../../jest.preset.js',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/fe/customer-end',
+  coverageDirectory: '../../../coverage/apps/fe/customer-end',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
