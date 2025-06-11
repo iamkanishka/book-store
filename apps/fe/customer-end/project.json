@@ -1,9 +1,9 @@
 {
   "name": "customer-end",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/customer-end/src",
+  "sourceRoot": "apps/fe/customer-end/src",
   "tags": [],
   "targets": {
     "build": {
@@ -11,22 +11,22 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/fe/customer-end",
-        "index": "apps/customer-end/src/index.html",
-        "browser": "apps/customer-end/src/main.ts",
+        "index": "apps/fe/customer-end/src/index.html",
+        "browser": "apps/fe/customer-end/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/customer-end/tsconfig.app.json",
+        "tsConfig": "apps/fe/customer-end/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/customer-end/public"
+            "input": "apps/fe/customer-end/public"
           }
         ],
-        "styles": ["apps/customer-end/src/styles.scss"],
+        "styles": ["apps/fe/customer-end/src/styles.scss"],
         "scripts": [],
-        "server": "apps/customer-end/src/main.server.ts",
+        "server": "apps/fe/customer-end/src/main.server.ts",
         "ssr": {
-          "entry": "apps/customer-end/src/server.ts"
+          "entry": "apps/fe/customer-end/src/server.ts"
         },
         "outputMode": "server"
       },
@@ -80,7 +80,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/customer-end/jest.config.ts"
+        "jestConfig": "apps/fe/customer-end/jest.config.ts"
       }
     },
     "serve-static": {
