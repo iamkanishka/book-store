@@ -19,7 +19,8 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/fe/admin-end/public"
+            "input": "apps/fe/admin-end/public",
+            "output": "assets"
           }
         ],
         "styles": ["apps/fe/admin-end/src/styles.scss"],
