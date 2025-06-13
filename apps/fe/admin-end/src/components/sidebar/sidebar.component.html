@@ -19,8 +19,9 @@
   [class.translate-x-0]="sidebar.isMobileOpen"
   [class.-translate-x-full]="!sidebar.isMobileOpen"
   [class.lg:translate-x-0]="true"
-  (mouseenter)="!sidebar.isExpanded && sidebar.setIsHovered(true)"
-  (mouseleave)="sidebar.setIsHovered(false)"
+  (mouseenter) = "!sidebar.isExpanded && sidebar.setIsHovered(true)"
+  (mouseleave) = "sidebar.setIsHovered(false)"
+ 
 >
   <div
     class="py-8 flex"
@@ -44,7 +45,7 @@
         height="40"
       />
       } @else {
-      <img src="assets/imageslogo-icon.svg" alt="Logo" width="32" height="32" />
+      <img src="assets/images/logo-icon.svg" alt="Logo" width="32" height="32" />
       }
     </a>
   </div>
@@ -68,13 +69,13 @@
             }
           </h2>
 
-          <ul class="flex flex-col gap-4">
+          <ul class="flex flex-col gap-4"   [class.lg:items-center]="!sidebar.isExpanded && !sidebar.isHovered"  [class.justify-start]="sidebar.isExpanded || sidebar.isHovered">
             @for (nav of navItems; track nav.name; let index = $index) {
             <li>
               @if (nav.subItems) {
               <button
                 (click)="handleSubmenuToggle(index, 'main')"
-                class="menu-item group"
+                class="menu-item group flex space-x-5"
                 [class.menu-item-active]="
                   openSubmenu?.type === 'main' && openSubmenu?.index === index
                 "
@@ -102,7 +103,7 @@
                     )
                   "
                 >
-                  {{ nav.icon }}
+                <lucide-angular [img]="iconMap[nav.icon]" class="menu-item-icon-size"></lucide-angular>
                 </span>
                 @if (sidebar.isExpanded || sidebar.isHovered ||
                 sidebar.isMobileOpen) {
@@ -113,7 +114,8 @@
                     openSubmenu?.type === 'main' && openSubmenu?.index === index
                   "
                 >
-                  ▼
+                <lucide-angular [img]="iconMap['chevrondown']" class="menu-item-icon-size"></lucide-angular>
+                  
                 </span>
                 }
               </button>
@@ -157,14 +159,15 @@
                 [routerLink]="nav.path"
                 routerLinkActive="menu-item-active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                class="menu-item group"
+                class="menu-item group flex space-x-5"
               >
                 <span
                   class="menu-item-icon-size"
                   [class.menu-item-icon-active]="isActive(nav.path)"
                   [class.menu-item-icon-inactive]="!isActive(nav.path)"
                 >
-                  {{ nav.icon }}
+                <lucide-angular [img]="iconMap[nav.icon]" class="menu-item-icon-size"></lucide-angular>
+               
                 </span>
                 @if (sidebar.isExpanded || sidebar.isHovered ||
                 sidebar.isMobileOpen) {
@@ -179,8 +182,8 @@
 
         <div>
           <h2
-            class="mb-4 text-xs uppercase flex leading-[20px] text-gray-400"
-            [class.lg:justify-center]="
+            class="mb-4 text-xs uppercase flex flex-col leading-[20px] text-gray-400"
+            [class.lg:items-center]="
               !sidebar.isExpanded && !sidebar.isHovered
             "
             [class.justify-start]="sidebar.isExpanded || sidebar.isHovered"
@@ -191,13 +194,13 @@
             }
           </h2>
 
-          <ul class="flex flex-col gap-4">
+          <ul class="flex flex-col gap-4" [class.lg:items-center]="!sidebar.isExpanded && !sidebar.isHovered"  [class.justify-start]="sidebar.isExpanded || sidebar.isHovered">
             @for (nav of othersItems; track nav.name; let index = $index) {
             <li>
               @if (nav.subItems) {
               <button
                 (click)="handleSubmenuToggle(index, 'others')"
-                class="menu-item group"
+                class="menu-item group flex space-x-5"
                 [class.menu-item-active]="
                   openSubmenu?.type === 'others' && openSubmenu?.index === index
                 "
@@ -227,7 +230,8 @@
                     )
                   "
                 >
-                  {{ nav.icon }}
+                <lucide-angular [img]="iconMap[nav.icon]" class="menu-item-icon-size"></lucide-angular>
+                
                 </span>
                 @if (sidebar.isExpanded || sidebar.isHovered ||
                 sidebar.isMobileOpen) {
@@ -239,7 +243,9 @@
                     openSubmenu?.index === index
                   "
                 >
-                  ▼
+                  
+                <lucide-angular [img]="iconMap['chevrondown']" class="menu-item-icon-size"></lucide-angular>
+
                 </span>
                 }
               </button>
@@ -283,14 +289,15 @@
                 [routerLink]="nav.path"
                 routerLinkActive="menu-item-active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                class="menu-item group"
+                class="menu-item group flex space-x-5"
               >
                 <span
                   class="menu-item-icon-size"
                   [class.menu-item-icon-active]="isActive(nav.path)"
                   [class.menu-item-icon-inactive]="!isActive(nav.path)"
                 >
-                  {{ nav.icon }}
+                <lucide-angular [img]="iconMap[nav.icon]" class="menu-item-icon-size"></lucide-angular>
+                  
                 </span>
                 @if (sidebar.isExpanded || sidebar.isHovered ||
                 sidebar.isMobileOpen) {
