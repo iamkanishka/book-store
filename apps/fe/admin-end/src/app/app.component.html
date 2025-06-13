@@ -1,2 +1,20 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<div class="min-h-screen xl:flex">
+    <div>
+      <app-sidebar />
+      <app-backdrop />
+    </div>
+    <div
+      class="flex-1 transition-all duration-300 ease-in-out"
+      [class]="{
+        'lg:ml-[290px]': sidebar.isExpanded || sidebar.isHovered,
+        'lg:ml-[90px]': !(sidebar.isExpanded || sidebar.isHovered),
+        'ml-0': sidebar.isMobileOpen
+      }"
+    >
+      <app-header />
+      <div class="p-4 mx-auto max-w-screen-2xl md:p-6">
+        ashdbcjashdbckhabsdkchbakshdbckhb
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
