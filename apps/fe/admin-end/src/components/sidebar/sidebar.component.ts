@@ -3,11 +3,15 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SidebarService } from '../../services/sidebar/sidebar.service';
 
 import { CommonModule } from '@angular/common';
+import { iconMap, IconKey } from '../../icons/icons';
+import { LucideAngularModule } from 'lucide-angular';
 // import { SidebarWidgetComponent } from './sidebar-widget.component';
+
+
 
 type NavItem = {
   name: string;
-  icon: string;
+  icon: IconKey;
   path?: string;
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
 };
@@ -19,6 +23,7 @@ type NavItem = {
     CommonModule,
     RouterLink,
     RouterLinkActive,
+    LucideAngularModule
     // SidebarWidgetComponent
   ],
   templateUrl: './sidebar.component.html',
@@ -28,9 +33,12 @@ export class SidebarComponent implements OnInit {
   private router = inject(Router);
   sidebar = inject(SidebarService);
 
+  readonly iconMap = iconMap
+
+
   navItems: NavItem[] = [
     {
-      icon: 'grid',
+      icon: 'layoutGrid',
       name: 'Dashboard',
       subItems: [{ name: 'Ecommerce', path: '/', pro: false }],
     },
@@ -40,7 +48,7 @@ export class SidebarComponent implements OnInit {
       path: '/calendar',
     },
     {
-      icon: 'user-circle',
+      icon: 'usercircle',
       name: 'User Profile',
       path: '/profile',
     },
@@ -66,7 +74,7 @@ export class SidebarComponent implements OnInit {
 
   othersItems: NavItem[] = [
     {
-      icon: 'pie-chart',
+      icon: 'piechart',
       name: 'Charts',
       subItems: [
         { name: 'Line Chart', path: '/line-chart', pro: false },
@@ -74,7 +82,7 @@ export class SidebarComponent implements OnInit {
       ],
     },
     {
-      icon: 'box-cube',
+      icon: 'boxcube',
       name: 'UI Elements',
       subItems: [
         { name: 'Alerts', path: '/alerts', pro: false },
